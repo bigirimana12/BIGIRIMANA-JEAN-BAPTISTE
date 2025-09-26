@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVP VPN Client</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.14.0"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main id="app">
+      <div class="card">
+        <header class="card-header">
+          <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            MVP VPN
+          </h1>
+          <div class="status" id="status-indicator" aria-live="polite">
+            <span class="status-light"></span>
+            <span id="status-text">Disconnected</span>
+          </div>
+        </header>
+        
+        <section class="connection-info">
+            <p>Your IP Address:</p>
+            <strong id="ip-address">192.168.1.10 (Local)</strong>
+        </section>
+
+        <button id="connect-btn" class="connect-btn" aria-label="Connect to VPN">
+            <span class="btn-text">Connect</span>
+            <div class="spinner" hidden></div>
+        </button>
+
+        <div class="server-select-wrapper">
+            <label for="server-select">Server Location:</label>
+            <select id="server-select" name="server">
+                <option value="us">USA - San Francisco</option>
+                <option value="de">Germany - Frankfurt</option>
+                <option value="jp">Japan - Tokyo</option>
+            </select>
+        </div>
+
+        <section class="info-section">
+            <h2>Learn More</h2>
+            <div class="info-buttons">
+                <button class="info-btn" data-prompt="Explain what a VPN is in simple, friendly terms for a non-technical user.">What is a VPN?</button>
+                <button class="info-btn" data-prompt="How does VPN encryption work? Explain it like I'm 15.">How does encryption work?</button>
+                <button class="info-btn" data-prompt="Why is it important to hide my IP address online? Give me 3 key reasons.">Why hide my IP?</button>
+            </div>
+            <div id="info-response" class="info-response" aria-live="polite">
+                <p>Click a button above to learn about VPNs!</p>
+            </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>
